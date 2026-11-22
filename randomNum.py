@@ -1,18 +1,13 @@
 #!/usr/bin/python3
 
+import argparse
+import sys
+
 # Random number using the middle square method
 def nextRand(seed: int):
-    numString = str(seed ** 2)
-    
-    # Insert 0s at front until eight digits
-    while len(numString) < 8:
-        numString = "0" + numString
-
-    middleFour = numString[2:-2]
-
+    numString = str(seed ** 2).zfill(8)
+    middleFour = numString[-6:-2]
     return int(middleFour)
-
-import argparse
 
 parser = argparse.ArgumentParser(description="Generate a series of random numbers using the middel square method.")
 parser.add_argument("seed", help="Seed for the random number generator", type=int)
@@ -31,6 +26,12 @@ lower = args.lower
 numBin = [0] * ((upper - lower) + 1)
 
 doStats = args.stats
+
+if not (0 <= args.lower <= args.upper <= 9999):
+    sys.exit("Error: Bounds must be in form 0 <= lower <= upper <= 9999")
+
+if count < 1:
+    sys.exit("Error: Count must be at least 1")
 
 for i in range(count):
     random = nextRand(seed) 
