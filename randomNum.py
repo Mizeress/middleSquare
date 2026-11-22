@@ -42,7 +42,9 @@ for i in range(count):
         print(f"{i + 1}. {random}")
     else:
         print(random)
-    numBin[(random - lower)] += 1
+
+    if doStats:
+        numBin[(random - lower)] += 1
 
 
 if doStats:
