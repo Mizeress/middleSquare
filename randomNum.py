@@ -32,12 +32,15 @@ numBin = [0] * ((upper - lower) + 1)
 
 doStats = args.stats
 
-for i in range(count):
-    random = nextRand(seed) 
-    seed = random
-    random = (random % upper) + lower
-    print(f"{i + 1}. {random}")
-    numBin[(random - lower)] += 1
+if count > 1:
+    for i in range(count):
+        random = nextRand(seed) 
+        seed = random
+        random = (random % upper) + lower
+        print(f"{i + 1}. {random}")
+        numBin[(random - lower)] += 1
+else:
+    print(nextRand(seed))
 
 if doStats:
     print()
