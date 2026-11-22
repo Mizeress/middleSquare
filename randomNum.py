@@ -12,7 +12,7 @@ def nextRand(seed: int):
 parser = argparse.ArgumentParser(description="Generate a series of random numbers using the middle square method.")
 parser.add_argument("seed", help="Seed for the random number generator", type=int)
 parser.add_argument("-c", "--count", type=int, default=1, help="Number of steps into seed to print")
-parser.add_argument("-u", "--upper", type=int, default=10000, help="Upper value possible (max 9999)")
+parser.add_argument("-u", "--upper", type=int, default=9999, help="Upper value possible (max 9999)")
 parser.add_argument("-l", "--lower", type=int, default=0, help="Lower value possible (min 0)")
 parser.add_argument("-s", "--stats", action="store_true", help="Print a bar graph for num appearances of each value")
 
@@ -25,7 +25,7 @@ lower = args.lower
 
 doStats = args.stats
 
-if not (0 <= args.lower <= args.upper <= 10000):
+if not (0 <= args.lower <= args.upper <= 9999):
     sys.exit("Error: Bounds must be in form 0 <= lower <= upper <= 9999")
 
 if count < 1:
